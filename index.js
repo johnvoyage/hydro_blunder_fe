@@ -12,7 +12,7 @@ const boatHeight = 50;
 const BASE_URL = "http://localhost:3000/api/v1/users"
 let allUsers;
 let signedInUsername;
-let signedInUserObject
+let signedInUserObject;
 
 const RUMRUNNERS = []
 
@@ -243,21 +243,33 @@ document.addEventListener('DOMContentLoaded', function(){
   function startScoreboard(userObject) {
     let scoreBoard = document.createElement('div')
     scoreBoard.id = "scoreboard"
-    console.log(userObject);
     scoreBoard.innerHTML =
     `
       <p>Username: ${userObject.username}</p>
-      <p>High Score: ${userObject.high_score}</p>
-      <p id="current-score">Current Score: ${0}</p>
+      <p>High Score: </p>
+      <p>${userObject.high_score}</p>
+      <p>Current Score: </p>
+      <p>0</p>
     `
     document.getElementById("game-screen").append(scoreBoard)
     startScoreboardCount()
   }
 
   function startScoreboardCount() {
-    let currentScore = document.querySelector('#current-score')
-    debugger
-    console.log(currentScore)
+    setInterval(function() {
+      tickScoreboard()
+    }, 100)
+  }
+
+  function tickScoreboard() {
+    let highScore = document.querySelector('#scoreboard').children[2].innerText
+    let currentScore = parseInt(document.querySelector('#scoreboard').children[4].innerText)
+    currentScore += 147
+    document.querySelector('#scoreboard').children[4].innerText = `${currentScore}`
+    if (highScore === "null" || currentScore > highScore) {
+      highScore = currentScore
+      document.querySelector('#scoreboard').children[2].innerText = `${highScore}`
+    }
   }
 
 

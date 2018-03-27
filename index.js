@@ -2,17 +2,19 @@ const LEFT = 37
 const UP = 38
 const RIGHT = 39
 const DOWN = 40
-let MOVES_PER_CLICK = 5
+let MOVES_PER_CLICK = 10
 // const BOAT = document.getElementById("game-boat")
 const boatWidth = 50;
 const boatHeight = 50;
-const boardWidth = 400;
-const boardHeight = 400;
+// const boardWidth = 400;
+// const boardHeight = 400;
 
 const BASE_URL = "http://localhost:3000/api/v1/users"
 let allUsers;
 let signedInUsername;
 let signedInUserObject
+
+const RUMRUNNERS = []
 
 document.addEventListener('DOMContentLoaded', function(){
   console.log('DOM Content Loaded')
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let userSignIn = document.createElement("form");
     userSignIn.innerHTML =
     `
-    
+
       <input name="user" list="usernames" placeholder="Username">
       <datalist id="usernames"></datalist>
       <input type="submit">
@@ -133,18 +135,18 @@ document.addEventListener('DOMContentLoaded', function(){
     boatImg.id = "game-boat"
     boatImg.src = "./assets/images/boatgif.gif"
     gameScreen.append(boatImg)
-    boatImg.style = "bottom: 0; left: 44%;"
+    boatImg.style = "top: 500px; left: 245px;"
     window.addEventListener('keydown', moveBoat)
+    startScoreboard(userObject)
+    startRumRunners()
   }
 
   function moveBoat(e) {
     const code = e.which
-
     if ([LEFT, RIGHT, UP, DOWN].indexOf(code) > -1) {
       e.preventDefault();
       e.stopPropagation();
     }
-
     if(code === LEFT) {
       moveBoatLeft();
     } else if(code === RIGHT) {
@@ -160,15 +162,11 @@ document.addEventListener('DOMContentLoaded', function(){
     return parseInt(p.split('px')[0]) || 0
   }
 
-
   function moveBoatLeft() {
     window.requestAnimationFrame(function() {
-      // debugger
       const louie = positionToInteger(document.getElementById('game-boat').style.left)
-
-      if (louie > 18) {
-        document.getElementById('game-boat').style.left = `${louie - 4}px`;
-
+      if (louie > 0) {
+        document.getElementById('game-boat').style.left = `${louie - MOVES_PER_CLICK}px`;
       }
     })
   }
@@ -176,34 +174,91 @@ document.addEventListener('DOMContentLoaded', function(){
   function moveBoatRight() {
     window.requestAnimationFrame(function() {
       const louie = positionToInteger(document.getElementById('game-boat').style.left)
-
-      if (louie < (boardWidth - boatWidth)) {
-        document.getElementById('game-boat').style.left = `${louie + 4}px`;
+      if (louie < 505) {
+        document.getElementById('game-boat').style.left = `${louie + MOVES_PER_CLICK}px`;
       }
     })
   }
 
   function moveBoatUp() {
     window.requestAnimationFrame(function() {
-      const ulysses = positionToInteger(BOAT.style.top)
-
-      if (ulysses < (boardHeight - boatHeight)) {
-        BOAT.style.top = `${ulysses + 4}px`;
+      const ulysses = positionToInteger(document.getElementById('game-boat').style.top)
+      if (ulysses > 0) {
+        document.getElementById('game-boat').style.top = `${ulysses - MOVES_PER_CLICK}px`;
       }
-
     })
   }
 
   function moveBoatDown() {
     window.requestAnimationFrame(function() {
-      const ulysses = positionToInteger(BOAT.style.top)
-
-      if (ulysses < (boardHeight - boatHeight)) {
-        BOAT.style.top = `${ulysses + 4}px`;
+      const ulysses = positionToInteger(document.getElementById('game-boat').style.top)
+      if (ulysses < 500) {
+        document.getElementById('game-boat').style.top = `${ulysses + MOVES_PER_CLICK}px`;
       }
     })
   }
 
+  function startRumRunners() {
+    setInterval(function() {
+      createRumRunner(Math.floor(Math.random() * (525)))
+    }, 1000)
+  }
+
+  // function checkCollision(x) {
+  //   console.log("danks");
+  // }
+
+  function createRumRunner(leftpx) {
+    let rumRunner = document.createElement("img");
+
+    rumRunner.className = "rumRunner";
+    rumRunner.style.left = `${leftpx}px`;
+    rumRunner.src = "./assets/images/rumRunner.png"
+    let top = rumRunner.style.top = 0;
+
+    document.getElementById("game-screen").append(rumRunner);
+
+
+    function moveRumRunner() {
+      rumRunner.style.top = `${top += 2}px`;
+
+      // if checkCollision(rumRunner) {
+      //   console.log("drunken feature... hic!");
+      // }
+      //
+
+      if (top < 550) {
+        window.requestAnimationFrame(moveRumRunner);
+      }else {
+        rumRunner.remove()
+      }
+    }
+    window.requestAnimationFrame(moveRumRunner)
+
+    RUMRUNNERS.push(rumRunner);
+
+    return rumRunner;
+  }
+
+  function startScoreboard(userObject) {
+    let scoreBoard = document.createElement('div')
+    scoreBoard.id = "scoreboard"
+    console.log(userObject);
+    scoreBoard.innerHTML =
+    `
+      <p>Username: ${userObject.username}</p>
+      <p>High Score: ${userObject.high_score}</p>
+      <p id="current-score">Current Score: ${0}</p>
+    `
+    document.getElementById("game-screen").append(scoreBoard)
+    startScoreboardCount()
+  }
+
+  function startScoreboardCount() {
+    let currentScore = document.querySelector('#current-score')
+    debugger
+    console.log(currentScore)
+  }
 
 
 })

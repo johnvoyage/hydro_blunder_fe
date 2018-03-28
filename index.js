@@ -1,8 +1,3 @@
-const LEFT = 37
-const UP = 38
-const RIGHT = 39
-const DOWN = 40
-let MOVES_PER_CLICK = 10
 // const BOAT = document.getElementById("game-boat")
 const boatWidth = 50;
 const boatHeight = 50;
@@ -14,7 +9,6 @@ let allUsers;
 let signedInUsername;
 let signedInUserObject;
 
-const RUMRUNNERS = []
 
 document.addEventListener('DOMContentLoaded', function(){
   console.log('DOM Content Loaded')
@@ -133,112 +127,17 @@ document.addEventListener('DOMContentLoaded', function(){
     let boatImg = document.createElement('img')
     let gameScreen = document.getElementById("game-screen")
     boatImg.id = "game-boat"
-    boatImg.src = "./assets/images/boatgif.gif"
+    boatImg.src = "./assets/images/gamepiece.png"
     gameScreen.append(boatImg)
     boatImg.style = "top: 500px; left: 245px;"
     window.addEventListener('keydown', moveBoat)
-    startScoreboard(userObject)
-    startRumRunners()
+    startScoreboard(userObject);
+    startRumRunners();
+    startGas();
+    startBuoys();
   }
 
-  function moveBoat(e) {
-    const code = e.which
-    if ([LEFT, RIGHT, UP, DOWN].indexOf(code) > -1) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    if(code === LEFT) {
-      moveBoatLeft();
-    } else if(code === RIGHT) {
-      moveBoatRight();
-    } else if (code === UP) {
-      moveBoatUp();
-    } else if (code === DOWN) {
-      moveBoatDown();
-    }
-  }
 
-  function positionToInteger(p) {
-    return parseInt(p.split('px')[0]) || 0
-  }
-
-  function moveBoatLeft() {
-    window.requestAnimationFrame(function() {
-      const louie = positionToInteger(document.getElementById('game-boat').style.left)
-      if (louie > 0) {
-        document.getElementById('game-boat').style.left = `${louie - MOVES_PER_CLICK}px`;
-      }
-    })
-  }
-
-  function moveBoatRight() {
-    window.requestAnimationFrame(function() {
-      const louie = positionToInteger(document.getElementById('game-boat').style.left)
-      if (louie < 505) {
-        document.getElementById('game-boat').style.left = `${louie + MOVES_PER_CLICK}px`;
-      }
-    })
-  }
-
-  function moveBoatUp() {
-    window.requestAnimationFrame(function() {
-      const ulysses = positionToInteger(document.getElementById('game-boat').style.top)
-      if (ulysses > 0) {
-        document.getElementById('game-boat').style.top = `${ulysses - MOVES_PER_CLICK}px`;
-      }
-    })
-  }
-
-  function moveBoatDown() {
-    window.requestAnimationFrame(function() {
-      const ulysses = positionToInteger(document.getElementById('game-boat').style.top)
-      if (ulysses < 500) {
-        document.getElementById('game-boat').style.top = `${ulysses + MOVES_PER_CLICK}px`;
-      }
-    })
-  }
-
-  function startRumRunners() {
-    setInterval(function() {
-      createRumRunner(Math.floor(Math.random() * (525)))
-    }, 1000)
-  }
-
-  // function checkCollision(x) {
-  //   console.log("danks");
-  // }
-
-  function createRumRunner(leftpx) {
-    let rumRunner = document.createElement("img");
-
-    rumRunner.className = "rumRunner";
-    rumRunner.style.left = `${leftpx}px`;
-    rumRunner.src = "./assets/images/rumRunner.png"
-    let top = rumRunner.style.top = 0;
-
-    document.getElementById("game-screen").append(rumRunner);
-
-
-    function moveRumRunner() {
-      rumRunner.style.top = `${top += 2}px`;
-
-      // if checkCollision(rumRunner) {
-      //   console.log("drunken feature... hic!");
-      // }
-      //
-
-      if (top < 550) {
-        window.requestAnimationFrame(moveRumRunner);
-      }else {
-        rumRunner.remove()
-      }
-    }
-    window.requestAnimationFrame(moveRumRunner)
-
-    RUMRUNNERS.push(rumRunner);
-
-    return rumRunner;
-  }
 
   function startScoreboard(userObject) {
     let scoreBoard = document.createElement('div')
@@ -251,7 +150,8 @@ document.addEventListener('DOMContentLoaded', function(){
       <p>Current Score: </p>
       <p>0</p>
     `
-    document.getElementById("game-screen").append(scoreBoard)
+    // document.getElementById("game-screen").append(scoreBoard)
+    document.body.append(scoreBoard)
     startScoreboardCount()
   }
 

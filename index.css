@@ -1,8 +1,10 @@
 #game-screen {
   position: absolute;
   right: 30%;
-  top: 8%;
-  background-color: rgb(85, 103, 129);
+  top: 5%;
+  background-image: url('./assets/images/boatbackground.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   border: 5px solid black;
 }
 
@@ -56,9 +58,9 @@
  }
 
  #game-boat {
-  width: 50px;
-  height: 50px;
-  opacity: 0.75;
+  width: 100px;
+  height: 100px;
+  /* opacity: 0.2; */
   position: relative;
   /* background-image: "./assets/images/boatgif.gif"; */
   /* background-color: red; */
@@ -69,19 +71,57 @@
  }
 
  .rumRunner {
-   width: 25px;
-   height: 25px;
+   width: 45px;
+   height: 45px;
+   position: absolute;
+ }
+
+ .gasTank {
+   width: 35px;
+   height: 35px;
+   position: absolute;
+ }
+
+ .Buoy {
+   width: 55px;
+   height: 55px;
    position: absolute;
  }
 
 #scoreboard {
   position: absolute;
-  top: 0px;
-  right: 10px;
-  z-index: 100;
-  text-decoration-color: red;
+  top: 5%;
+  right: 5%;
+  height: 200px;
+  width: 300px;
+  /* text-decoration-color: red; */
+  background-image: url('./assets/images/boatgif.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px solid black;
+  padding: 10px;
 }
 
 #scoreboard p {
-  color: black;
+  color: white;
 }
+
+/* #leaderboard {
+  position: absolute;
+  right: 30%;
+  top: 5%;
+  background-image: url('./assets/images/boatbackground.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px solid black;
+}
+
+#user-stats {
+  position: absolute;
+  right: 30%;
+  top: 5%;
+  background-image: url('./assets/images/boatbackground.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 5px solid black;
+} */

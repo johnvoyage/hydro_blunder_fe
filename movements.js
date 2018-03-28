@@ -4,6 +4,11 @@ const RIGHT = 39
 const DOWN = 40
 let MOVES_PER_CLICK = 10
 
+
+function reorientBoat() {
+  document.getElementById('game-boat').style.transform = ""
+}
+
 function moveBoat(e) {
   const code = e.which
   if ([LEFT, RIGHT, UP, DOWN].indexOf(code) > -1) {
@@ -28,25 +33,30 @@ function positionToInteger(p) {
 function moveBoatLeft() {
   window.requestAnimationFrame(function() {
     const louie = positionToInteger(document.getElementById('game-boat').style.left)
-    if (louie > 0) {
+    if (louie > -20) {
       document.getElementById('game-boat').style.left = `${louie - MOVES_PER_CLICK}px`;
     }
   })
+  let boatImg = document.getElementById("game-boat")
+  document.getElementById('game-boat').style.transform = "rotate(315deg)"
 }
 
 function moveBoatRight() {
   window.requestAnimationFrame(function() {
     const louie = positionToInteger(document.getElementById('game-boat').style.left)
-    if (louie < 505) {
+    if (louie < 710) {
       document.getElementById('game-boat').style.left = `${louie + MOVES_PER_CLICK}px`;
     }
   })
+  // debugger
+  let boatImg = document.getElementById("game-boat")
+  document.getElementById('game-boat').style.transform = "rotate(45deg)"
 }
 
 function moveBoatUp() {
   window.requestAnimationFrame(function() {
     const ulysses = positionToInteger(document.getElementById('game-boat').style.top)
-    if (ulysses > 0) {
+    if (ulysses > -10) {
       document.getElementById('game-boat').style.top = `${ulysses - MOVES_PER_CLICK}px`;
     }
   })
@@ -55,8 +65,10 @@ function moveBoatUp() {
 function moveBoatDown() {
   window.requestAnimationFrame(function() {
     const ulysses = positionToInteger(document.getElementById('game-boat').style.top)
-    if (ulysses < 600) {
+    if (ulysses < 520) {
       document.getElementById('game-boat').style.top = `${ulysses + MOVES_PER_CLICK}px`;
     }
   })
+  let boatImg = document.getElementById("game-boat")
+  document.getElementById('game-boat').style.transform = "rotate(180deg)"
 }

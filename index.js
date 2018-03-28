@@ -1,6 +1,7 @@
 // const BOAT = document.getElementById("game-boat")
 const boatWidth = 50;
 const boatHeight = 50;
+// const FALL_SPEED = Math.random() * 4 + 1
 // const boardWidth = 400;
 // const boardHeight = 400;
 
@@ -49,6 +50,14 @@ document.addEventListener('DOMContentLoaded', function(){
       getLoggedInUser()
     })
     let gameScreen = document.getElementById('game-screen')
+    let dankLogo = document.createElement('div')
+    dankLogo.id = "remove-logo"
+    dankLogo.className = "center-text-box"
+    dankLogo.innerHTML =
+    `
+      <img id="dank-logo" src="./assets/images/DANK.png">
+    `
+    gameScreen.append(dankLogo)
     gameScreen.append(userSignIn);
   }
 
@@ -77,14 +86,12 @@ document.addEventListener('DOMContentLoaded', function(){
     playerDataDiv.id = "player-data-div"
     playerDataDiv.innerHTML =
     `
-      <h1>Username: ${userObject.username}</h1>
-      <h3>High Score: ${userObject.high_score}</h3>
-      <h3>Games Played: ${userObject.game_count}</h3>
-      <h3>Rum Runners: ${userObject.drink_count}</h3>
-      <h2 id="start-button"> START </h2>
-      <br>
-      <br>
-      <h3 id="delete-button"> DELETE USER </h3>
+      <h2>Username: ${userObject.username}</h2>
+      <h4>High Score: ${userObject.high_score}</h4>
+      <h4>Games Played: ${userObject.game_count}</h4>
+      <h4>Rum Runners: ${userObject.drink_count}</h4>
+      <h1 id="start-button"> START </h1>
+      <h1 id="delete-button"> DELETE USER </h1>
     `
     playerDataDiv.className = "center"
     gameScreen.append(playerDataDiv)
@@ -120,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function(){
     startButton.addEventListener("click", e => {
       playerDiv.innerHTML = ""
       startGame(userObject)
+      document.querySelector('#remove-logo').remove()
     })
   }
 
@@ -131,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function(){
     gameScreen.append(boatImg)
     boatImg.style = "top: 500px; left: 245px;"
     window.addEventListener('keydown', moveBoat)
+    window.addEventListener('keyup', reorientBoat)
     startScoreboard(userObject);
     startRumRunners();
     startGas();

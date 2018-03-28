@@ -2,7 +2,7 @@ const GAS = []
 
 function startGas() {
   setInterval(function() {
-    createGas(Math.floor(Math.random() * (525)))
+    createGas(Math.floor(Math.random() * (565)))
   }, Math.random() * 3000 + 3000)
 }
 
@@ -16,17 +16,18 @@ function createGas(leftpx) {
   let top = gasTank.style.top = 0;
 
   document.getElementById("game-screen").append(gasTank);
+  let fallSpeed = Math.random() * 4 + 1
 
 
   function moveGas() {
-    gasTank.style.top = `${top += 2}px`;
+    gasTank.style.top = `${top += fallSpeed}px`;
 
     // if checkCollision(gasTank) {
     //   console.log("drunken feature... hic!");
     // }
     //
 
-    if (top < 590) {
+    if (top < 565) {
       window.requestAnimationFrame(moveGas);
     }else {
       gasTank.remove()

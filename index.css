@@ -43,6 +43,7 @@
 
  #start-button {
   text-decoration: underline;
+  line-height: 20px;
  }
 
  #start-button:hover {
@@ -51,6 +52,7 @@
 
  #delete-button {
   text-decoration: underline;
+  line-height: 20px;
  }
 
  #delete-button:hover {
@@ -68,6 +70,7 @@
   /* bottom: 0; */
   /* right: 175px; */
   /* left: 175px; */
+  /* transform: rotateY(); */
  }
 
  .rumRunner {
@@ -125,3 +128,13 @@
   background-size: 100% 100%;
   border: 5px solid black;
 } */
+
+#dank-logo {
+  width: 300px;
+  height: 300px;
+  margin-top: 50px;
+}
+
+#player-data-div {
+  line-height: 2px;
+}

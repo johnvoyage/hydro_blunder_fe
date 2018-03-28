@@ -2,7 +2,7 @@ const RUMRUNNERS = []
 
 function startRumRunners() {
   setInterval(function() {
-    createRumRunner(Math.floor(Math.random() * (525)))
+    createRumRunner(Math.floor(Math.random() * (555)))
   }, 1000)
 }
 
@@ -19,17 +19,17 @@ function createRumRunner(leftpx) {
   let top = rumRunner.style.top = 0;
 
   document.getElementById("game-screen").append(rumRunner);
-
+  let fallSpeed = Math.random() * 4 + 1
 
   function moveRumRunner() {
-    rumRunner.style.top = `${top += 2}px`;
+    rumRunner.style.top = `${top += fallSpeed}px`;
 
     // if checkCollision(rumRunner) {
     //   console.log("drunken feature... hic!");
     // }
     //
 
-    if (top < 590) {
+    if (top < 555) {
       window.requestAnimationFrame(moveRumRunner);
     }else {
       rumRunner.remove()

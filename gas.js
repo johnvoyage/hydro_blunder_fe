@@ -1,9 +1,11 @@
 const GAS = []
 
 function startGas() {
+
   setInterval(function() {
-    createGas(Math.floor(Math.random() * (565)))
+    createGas(Math.floor(Math.random() * (765)))
   }, Math.random() * 3000 + 3000)
+
 }
 
 

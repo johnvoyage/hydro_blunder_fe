@@ -7,8 +7,10 @@ const boatHeight = 50;
 
 const BASE_URL = "http://localhost:3000/api/v1/users"
 let allUsers;
-let signedInUsername;
+// let signedInUsername;
 let signedInUserObject;
+let gameEnded = false;
+let highScorePatched = false;
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -106,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function(){
     deleteButton.addEventListener("click", e => {
       deleteUser(userObject);
       playerDiv.innerHTML = ""
+      document.querySelector('#remove-logo').remove()
       setTimeout(fetchUsers, 100)
     })
   }
@@ -161,14 +164,46 @@ document.addEventListener('DOMContentLoaded', function(){
     `
     // document.getElementById("game-screen").append(scoreBoard)
     document.body.append(scoreBoard)
-    startScoreboardCount()
+    startScoreboardCount(userObject)
   }
 
-  function startScoreboardCount() {
-    setInterval(function() {
-      tickScoreboard()
-    }, 100)
+  function startScoreboardCount(userObject) {
+      setInterval(function() {
+        if (!gameEnded) {
+          tickScoreboard()
+        } else if (!highScorePatched) {
+          highScorePatched = true
+          let highScore = parseInt(document.querySelector('#scoreboard').children[2].innerText)
+          let gamesPlayed = userObject.game_count + 1
+          //NEED TO DO THIS
+          let drinksDrunk = userObject.drink_count + 0
+          //////////////
+          return fetch(`${BASE_URL}/${userObject.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              high_score: highScore,
+              game_count: gamesPlayed,
+              drink_count: drinksDrunk
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            }
+          })
+        }
+      }, 100)
   }
+
+  // fetch(`${BASE_URL}/notes/${noteId}`, {
+  //   method: 'PATCH',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     title: noteTitle,
+  //     body: noteBody
+  //   })
+  // }).then( res => res.json()).then(json => revealNote(json))
 
   function tickScoreboard() {
     let highScore = document.querySelector('#scoreboard').children[2].innerText

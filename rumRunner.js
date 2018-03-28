@@ -2,7 +2,7 @@ const RUMRUNNERS = []
 
 function startRumRunners() {
   setInterval(function() {
-    createRumRunner(Math.floor(Math.random() * (555)))
+    createRumRunner(Math.floor(Math.random() * (755)))
   }, 1000)
 }
 

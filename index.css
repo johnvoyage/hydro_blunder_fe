@@ -130,11 +130,32 @@
 } */
 
 #dank-logo {
+  /* position: absolute; */
   width: 300px;
   height: 300px;
   margin-top: 50px;
+  z-index: 200;
 }
 
 #player-data-div {
   line-height: 2px;
+}
+
+#game-over-text {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  color: red;
+  transform: scale(5);
+  z-index: 201;
+}
+
+#game-over-logo {
+  /* right: 30%; */
+  /* top: 1%; */
+  position: absolute;
+  width: 1000px;
+  height: 650px;
+  left: 10%;
+  z-index: 200;
 }

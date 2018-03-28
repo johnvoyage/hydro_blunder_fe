@@ -1,10 +1,8 @@
 const BUOYS = []
-// window.addEventListener('click', e => {debugger})
+
 
 function checkCollision(buoy) {
-  // window.addEventListener('click', e => debugger)
-  // let boatRectangle = {x: , y: , w: 100, h: 100}
-  // let buoyRectangle = {}
+
   let top = positionToInteger(buoy.style.top)
 
   let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left)
@@ -16,38 +14,37 @@ function checkCollision(buoy) {
   let boatBottomEdge = boatTopEdge + 100;
   let buoyTopEdge = top;
   let buoyBottomEdge = buoyTopEdge + 55;
-  // rocks are 20px high
-  // DODGER is 20px high
-  // // GAME_HEIGHT - 20 - 20 = 360px;
-  // console.log('hereeee')
-  // console.log(buoyTopEdge)
-
 
   if (
-    //checks if it was hit straight on
-
-
-    // ((buoyLeftEdge === boatRightEdge) && (buoyBottomEdge > boatBottomEdge) && (buoyBottomEdge < boatBottomEdge)) ||
-    ((buoyLeftEdge > boatLeftEdge) && (buoyLeftEdge < boatRightEdge) && (buoyBottomEdge < boatTopEdge) && (buoyBottomEdge < boatBottomEdge))
-    // ((buoyLeftEdge > boatLeftEdge) && (buoyLeftEdge < boatRightEdge) && (buoyBottomEdge < boatTopEdge) && (buoyBottomEdge > boatBottomEdge)) ||
-    // ((buoyLeftEdge > boatLeftEdge) && (buoyLeftEdge < boatRightEdge) && (buoyBottomEdge < boatTopEdge) && (buoyBottomEdge > boatBottomEdge)) ||
-    // ((buoyLeftEdge > boatLeftEdge) && (buoyLeftEdge < boatRightEdge) && (buoyBottomEdge < boatTopEdge) && (buoyBottomEdge > boatBottomEdge))
-
+    (buoyLeftEdge <= boatLeftEdge && buoyRightEdge >= boatLeftEdge) ||
+    (buoyLeftEdge >= boatLeftEdge && buoyRightEdge <= boatRightEdge) ||
+    (buoyLeftEdge <= boatRightEdge && buoyRightEdge >= boatRightEdge)
   ) {
-    console.log("hit");
+    if (
+      (buoyTopEdge <= boatTopEdge && buoyBottomEdge >= boatTopEdge) ||
+      (buoyTopEdge >= boatTopEdge && buoyBottomEdge <= boatBottomEdge) ||
+      (buoyTopEdge <= boatBottomEdge && buoyBottomEdge >= boatBottomEdge)
+    ) {
+      return true
+      // endGame()
+    }
   } else {
     return false
   }
+
 }
 
 function startBuoys() {
+
   setInterval(function() {
-    createBuoy(Math.floor(Math.random() * (545)))
+    createBuoy(Math.floor(Math.random() * (745)))
   }, Math.random() * 3000 + 3000)
+
 }
 
 
 function createBuoy(leftpx) {
+
   let buoy = document.createElement("img");
 
   buoy.className = "Buoy";
@@ -64,7 +61,8 @@ function createBuoy(leftpx) {
     buoy.style.top = `${top += fallSpeed}px`;
 
     if (checkCollision(buoy)) {
-      console.log("drunken feature... hic!");
+      // console.log('game over')
+      endGame();
     }
 
 
@@ -79,4 +77,5 @@ function createBuoy(leftpx) {
   BUOYS.push(buoy);
 
   return buoy;
+
 }

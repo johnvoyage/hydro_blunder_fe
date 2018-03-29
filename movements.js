@@ -1,7 +1,7 @@
-const LEFT = 37
-const UP = 38
-const RIGHT = 39
-const DOWN = 40
+let LEFT = 37
+let UP = 38
+let RIGHT = 39
+let DOWN = 40
 let MOVES_PER_CLICK = 10
 
 

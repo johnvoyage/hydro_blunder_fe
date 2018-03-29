@@ -48,7 +48,6 @@ function moveBoatRight() {
       document.getElementById('game-boat').style.left = `${louie + MOVES_PER_CLICK}px`;
     }
   })
-  // debugger
   let boatImg = document.getElementById("game-boat")
   document.getElementById('game-boat').style.transform = "rotate(45deg)"
 }

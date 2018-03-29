@@ -35,5 +35,11 @@ function changeBackgroundGift() {
   let gameScreenBackground = document.querySelector('#game-screen')
   gameScreenBackground.style.backgroundImage = "url('./assets/images/gameovercrashgif.gif')"
   // gameScreenBackground.style.zIndex = 999
+}
 
+function removePieces() {
+  let gasTank = document.getElementsByClassName("gasTank")
+  let rumRunner = document.getElementsByClassName("rumRunner")
+  let boatImage = document.getElementById("game-boat")
+  let buoy = document.getElementsByClassName("Buoy")
 }

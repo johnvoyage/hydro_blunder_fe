@@ -82,15 +82,21 @@ document.addEventListener('DOMContentLoaded', function(){
     let rulesText = document.querySelector('#rules')
     let rulesDiv = document.createElement('div')
     rulesDiv.id = "rules-div"
-    rulesDiv.innerHTML =
-    `
-      <img src="./assets/images/buoy.gif" width="40px" height="40px">Hit a buoy, lose the game!<br>
-      <img src="./assets/images/gas.png" width="40px" height="40px">Make sure to get gas before you run out!<br>
-      <img src="./assets/images/rumRunner.png" width="40px" height="40px">Drinks make you drunk, reversing directions!<br>
-      <img src="./assets/images/gamepiece.png" width="80px" height="60px">This is your boat, Dr. Evil!
-    `
+
     rulesText.addEventListener('click', function(event) {
-      rulesText.append(rulesDiv)
+      if(rulesDiv.innerHTML === "") {
+        rulesDiv.innerHTML =
+        `
+          <img src="./assets/images/buoy.gif" width="40px" height="40px">Hit a buoy, lose the game!<br>
+          <img src="./assets/images/gas.png" width="40px" height="40px">Make sure to get gas before you run out!<br>
+          <img src="./assets/images/rumRunner.png" width="40px" height="40px">Drinks make you drunk, reversing directions!<br>
+          <img src="./assets/images/gamepiece.png" width="80px" height="60px">This is your boat, Dr. Evil!
+        `
+        rulesText.append(rulesDiv)
+      } else {
+        rulesDiv.innerHTML = ""
+        rulesText.append(rulesDiv)
+      }
     })
   }
 

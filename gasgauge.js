@@ -42,6 +42,9 @@ function startGasGauge() {
 
           ticks: {
               beginAtZero: true,
+              min: -20,
+              max: -1,
+              stepSize: 1,
           }
         }],
         yAxes: [{
@@ -50,10 +53,13 @@ function startGasGauge() {
             fontColor: 'black',
             fontFamily: 'Arial',
             fontSize: 30,
+
           },
           position: 'right',
         }]
-      }
+      },
+      // responsive: false,
+      // maintainAspectRatio: false
     }
   });
 }

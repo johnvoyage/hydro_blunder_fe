@@ -21,7 +21,7 @@ function startGasGauge() {
       datasets: [{
         label: "",
         data: [
-          -gasGauge - 1,
+          -gasGauge,
           0
         ],
         backgroundColor: [
@@ -64,7 +64,7 @@ function updateLitness(drunkenness) {
   barChart.update()
 }
 
-function updateGas(gasLevel - 1) {
+function updateGas(gasLevel) {
   // debugger
   if (gasLevel > 0) {
     barChart.data.datasets[0].data[0] = -gasLevel

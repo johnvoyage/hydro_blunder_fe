@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function(){
   fetchUsers()
 
   function createUsernameDataList(json) {
-    createUsernameForm()
+    createUsernameForm();
+    createLeaderboard(json);
     let userOptions = '';
     json.forEach(user => {
       userOptions += `<option value="${user.username}"/>`
@@ -39,11 +40,12 @@ document.addEventListener('DOMContentLoaded', function(){
     let userSignIn = document.createElement("form");
     userSignIn.innerHTML =
     `
-
       <input name="user" list="usernames" placeholder="Username">
       <datalist id="usernames"></datalist>
-      <input type="submit">
+      <input type="submit"><br>
+      <h4 id="rules">Click for Hydro Blunder rules</h4>
     `
+
     userSignIn.className = "center-text-box"
     userSignIn.addEventListener('submit', event => {
       event.preventDefault();
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function(){
     `
     gameScreen.append(dankLogo)
     gameScreen.append(userSignIn);
+    rulesClicker()
   }
 
   function usernameSubmitted(event) {
@@ -74,6 +77,23 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     })
   }
+
+  function rulesClicker() {
+    let rulesText = document.querySelector('#rules')
+    let rulesDiv = document.createElement('div')
+    rulesDiv.id = "rules-div"
+    rulesDiv.innerHTML =
+    `
+      <img src="./assets/images/buoy.gif" width="40px" height="40px">Hit a buoy, lose the game!<br>
+      <img src="./assets/images/gas.png" width="40px" height="40px">Make sure to get gas before you run out!<br>
+      <img src="./assets/images/rumRunner.png" width="40px" height="40px">Drinks make you drunk, reversing directions!<br>
+      <img src="./assets/images/gamepiece.png" width="80px" height="60px">This is your boat, Dr. Evil!
+    `
+    rulesText.addEventListener('click', function(event) {
+      rulesText.append(rulesDiv)
+    })
+  }
+
 
   function getLoggedInUser() {
     signedInUserPromise.then(resp => resp.json())
@@ -91,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function(){
       <h3>Username: ${userObject.username}</h3>
       <h4>High Score: ${userObject.high_score}</h4>
       <h4>Games Played: ${userObject.game_count}</h4>
-      <h4>Rum Runners: ${userObject.drink_count}</h4>
       <h2 id="start-button"> START </h2><br><br><br><br> <br>
       <h2 id="delete-button"> DELETE USER </h2>
     `

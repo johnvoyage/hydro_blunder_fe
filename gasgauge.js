@@ -42,7 +42,7 @@ function startGasGauge() {
 
           ticks: {
               beginAtZero: true,
-              min: -20,
+              min: -12,
               max: -1,
               stepSize: 1,
           }

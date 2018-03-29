@@ -5,6 +5,7 @@ function endGame(){
     gameEnded = true
     changeScoreboardGif()
     changeBackgroundGif()
+    document.querySelector("canvas").remove();
   }
 }
 

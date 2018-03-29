@@ -1,14 +1,16 @@
 const BUOYS = []
-
+// window.addEventListener("click", () => {
+//   debugger
+// })
 
 function checkCollision(buoy) {
 
   let top = positionToInteger(buoy.style.top)
 
-  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left)
-  let boatRightEdge = boatLeftEdge + 100;
-  let buoyLeftEdge = positionToInteger(buoy.style.left)
-  let buoyRightEdge = buoyLeftEdge + 55;
+  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left) + 50;
+  let boatRightEdge = boatLeftEdge + 20;
+  let buoyLeftEdge = positionToInteger(buoy.style.left) + 10;
+  let buoyRightEdge = buoyLeftEdge + 35;
 
   let boatTopEdge = positionToInteger(document.getElementById("game-boat").style.top)
   let boatBottomEdge = boatTopEdge + 100;
@@ -38,7 +40,7 @@ function startBuoys() {
 
   setInterval(function() {
     createBuoy(Math.floor(Math.random() * (745)))
-  }, Math.random() * 3000 + 3000)
+  }, Math.random() * 2500 + 1500)
 
 }
 
@@ -61,7 +63,6 @@ function createBuoy(leftpx) {
       buoy.style.top = `${top += fallSpeed}px`;
 
       if (checkCollision(buoy)) {
-        // console.log('game over')
         endGame();
       }
 

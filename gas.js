@@ -5,8 +5,8 @@ function checkCollision(gas) {
 
   let top = positionToInteger(gas.style.top)
 
-  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left)
-  let boatRightEdge = boatLeftEdge + 100;
+  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left) + 50;
+  let boatRightEdge = boatLeftEdge + 20;
   let gasLeftEdge = positionToInteger(gas.style.left)
   let gasRightEdge = gasLeftEdge + 35;
 
@@ -44,7 +44,7 @@ function startGas() {
 
   setInterval(function() {
     createGas(Math.floor(Math.random() * (765)))
-  }, Math.random() * 3000 + 3000)
+  }, Math.random() * 2500 + 2000)
 }
 
 function createGas(leftpx) {
@@ -66,10 +66,10 @@ function createGas(leftpx) {
       if (checkCollision(gasTank)) {
         gasTank.remove()
         // console.log('collided', gasGauge)
-        let updatedGasLevel = gasGauge + 6
+        let updatedGasLevel = gasGauge + 4
         console.log(updatedGasLevel)
         updateGas(updatedGasLevel)
-        return gasGauge += 6
+        return gasGauge += 4
 
       }
 

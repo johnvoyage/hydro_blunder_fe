@@ -27,8 +27,8 @@ function checkCollision(rumRunner) {
 
   let top = positionToInteger(rumRunner.style.top)
 
-  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left)
-  let boatRightEdge = boatLeftEdge + 100;
+  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left) + 50;
+  let boatRightEdge = boatLeftEdge + 25;
   let rumRunnerLeftEdge = positionToInteger(rumRunner.style.left)
   let rumRunnerRightEdge = rumRunnerLeftEdge + 35;
 
@@ -77,7 +77,7 @@ function createRumRunner(leftpx) {
 
       if (checkCollision(rumRunner)) {
         rumRunner.remove();
-        drunkenness += 2
+        drunkenness += 5
         // console.log(drunkenness);
 
         top = 700

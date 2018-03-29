@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // document.getElementById("game-screen").append(scoreBoard)
     document.body.append(scoreBoard)
     startScoreboardCount(userObject)
+    startGasGauge();
   }
 
   function startScoreboardCount(userObject) {

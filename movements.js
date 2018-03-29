@@ -2,7 +2,7 @@ let LEFT = 37
 let UP = 38
 let RIGHT = 39
 let DOWN = 40
-let MOVES_PER_CLICK = 10
+let MOVES_PER_CLICK = 20
 
 
 function reorientBoat() {

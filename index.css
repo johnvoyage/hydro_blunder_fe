@@ -159,3 +159,16 @@
   left: 10%;
   z-index: 200;
 }
+
+.canvas-container {
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  width: 300px;
+  height: 100px;
+}
+
+#myChart {
+  /* width: 150px;
+  height: 100px; */
+}

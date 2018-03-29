@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function(){
       <h4>High Score: ${userObject.high_score}</h4>
       <h4>Games Played: ${userObject.game_count}</h4>
       <h4>Rum Runners: ${userObject.drink_count}</h4>
-      <h2 id="start-button"> START </h2> <br> <br> <br><br> <br>
+      <h2 id="start-button"> START </h2><br><br><br><br> <br>
       <h2 id="delete-button"> DELETE USER </h2>
     `
     playerDataDiv.className = "center"

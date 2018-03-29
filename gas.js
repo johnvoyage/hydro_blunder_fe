@@ -35,6 +35,8 @@ function checkCollision(gas) {
 function startGas() {
   setInterval(function() {
     gasGauge -= 1;
+    console.log(gasGauge)
+    updateGas(gasGauge)
     if (gasGauge === 0) {
       return endGame()
     }
@@ -63,7 +65,12 @@ function createGas(leftpx) {
 
       if (checkCollision(gasTank)) {
         gasTank.remove()
+        // console.log('collided', gasGauge)
+        let updatedGasLevel = gasGauge + 6
+        console.log(updatedGasLevel)
+        updateGas(updatedGasLevel)
         return gasGauge += 6
+
       }
 
       if (top < 565) {

@@ -10,7 +10,8 @@ function getShwasted() {
       RIGHT = 37;
       UP = 40;
       DOWN = 38;
-      console.log(drunkenness);
+      // console.log(drunkenness);
+      updateLitness(drunkenness)
     } else {
       LEFT = 37;
       RIGHT = 39;
@@ -18,6 +19,7 @@ function getShwasted() {
       DOWN = 40;
     }
   }, 1000)
+
 }
 
 
@@ -75,8 +77,8 @@ function createRumRunner(leftpx) {
 
       if (checkCollision(rumRunner)) {
         rumRunner.remove();
-        drunkenness += 20
-        console.log(drunkenness);
+        drunkenness += 2
+        // console.log(drunkenness);
 
         top = 700
       }

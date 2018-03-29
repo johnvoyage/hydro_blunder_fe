@@ -46,34 +46,36 @@ function startGas() {
 }
 
 function createGas(leftpx) {
-  let gasTank = document.createElement("img");
+  if (!gameEnded) {
+    let gasTank = document.createElement("img");
 
-  gasTank.className = "gasTank";
-  gasTank.style.left = `${leftpx}px`;
-  gasTank.src = "./assets/images/gas.png"
-  let top = gasTank.style.top = 0;
+    gasTank.className = "gasTank";
+    gasTank.style.left = `${leftpx}px`;
+    gasTank.src = "./assets/images/gas.png"
+    let top = gasTank.style.top = 0;
 
-  document.getElementById("game-screen").append(gasTank);
-  let fallSpeed = Math.random() * 4 + 1
+    document.getElementById("game-screen").append(gasTank);
+    let fallSpeed = Math.random() * 4 + 1
 
 
-  function moveGas() {
-    gasTank.style.top = `${top += fallSpeed}px`;
+    function moveGas() {
+      gasTank.style.top = `${top += fallSpeed}px`;
 
-    if (checkCollision(gasTank)) {
-      gasTank.remove()
-      return gasGauge += 5
+      if (checkCollision(gasTank)) {
+        gasTank.remove()
+        return gasGauge += 5
+      }
+
+      if (top < 565) {
+        window.requestAnimationFrame(moveGas);
+      }else {
+        gasTank.remove()
+      }
     }
+    window.requestAnimationFrame(moveGas)
 
-    if (top < 565) {
-      window.requestAnimationFrame(moveGas);
-    }else {
-      gasTank.remove()
-    }
+    GAS.push(gasTank);
+
+    return gasTank;
   }
-  window.requestAnimationFrame(moveGas)
-
-  GAS.push(gasTank);
-
-  return gasTank;
 }

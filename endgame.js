@@ -3,26 +3,8 @@
 function endGame(){
   if (!gameEnded) {
     gameEnded = true
-    // debugger
-
-    // let gameOverText = document.createElement('h1')
-    // gameOverText.id = "game-over-text"
-    // gameOverText.innerText = "GAME OVER"
-    //
-    // let endGameImage = document.createElement("img")
-    // endGameImage.src = "./assets/images/DANK.png"
-    // endGameImage.id = "game-over-logo"
-    // endGameImage.className = "center-text-box"
-    //
-    // document.body.append(endGameImage)
-    // document.body.append(gameOverText)
-
-    // setInterval(function () {return document.getElementById("game-screen").append(img2)}, 1000)
-
-    console.log('inside engame')
-  // document.querySelector('#game-screen').innerHTML = ""
-  changeScoreboardGif()
-  changeBackgroundGift()
+    changeScoreboardGif()
+    changeBackgroundGift()
   }
 }
 
@@ -37,9 +19,28 @@ function changeBackgroundGift() {
   // gameScreenBackground.style.zIndex = 999
 }
 
-function removePieces() {
-  let gasTank = document.getElementsByClassName("gasTank")
-  let rumRunner = document.getElementsByClassName("rumRunner")
-  let boatImage = document.getElementById("game-boat")
-  let buoy = document.getElementsByClassName("Buoy")
-}
+// function removePieces() {
+//   let gasTanks = document.getElementsByClassName("gasTank")
+//   let rumRunners = document.getElementsByClassName("rumRunner")
+//   let boatImage = document.getElementById("game-boat")
+//   let buoys = document.getElementsByClassName("Buoy")
+//
+//   if(gameEnded) {
+//     for(let i = 0; i < gasTanks.length; i++) {
+//       let tank = gasTanks[i]
+//       tank.remove();
+//     }
+//
+//     for(let j = 0; j < rumRunners.length; j++) {
+//       let runner = rumRunners[j]
+//       runner.remove();
+//     }
+//
+//     for(let k = 0; k < buoys.length; k++) {
+//       let buoy = buoys[k]
+//       buoy.remove();
+//     }
+//
+//     boatImage.remove();
+//   }
+// }

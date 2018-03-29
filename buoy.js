@@ -44,38 +44,38 @@ function startBuoys() {
 
 
 function createBuoy(leftpx) {
+  if (!gameEnded) {
+    let buoy = document.createElement("img");
 
-  let buoy = document.createElement("img");
+    buoy.className = "Buoy";
+    buoy.style.left = `${leftpx}px`;
+    buoy.src = "./assets/images/buoy.gif"
+    let top = buoy.style.top = 0;
 
-  buoy.className = "Buoy";
-  buoy.style.left = `${leftpx}px`;
-  buoy.src = "./assets/images/buoy.gif"
-  let top = buoy.style.top = 0;
-
-  document.getElementById("game-screen").append(buoy);
-  let fallSpeed = Math.random() * 4 + 1
+    document.getElementById("game-screen").append(buoy);
+    let fallSpeed = Math.random() * 4 + 1
 
 
 
-  function moveBuoy() {
-    buoy.style.top = `${top += fallSpeed}px`;
+    function moveBuoy() {
+      buoy.style.top = `${top += fallSpeed}px`;
 
-    if (checkCollision(buoy)) {
-      // console.log('game over')
-      endGame();
+      if (checkCollision(buoy)) {
+        // console.log('game over')
+        endGame();
+      }
+
+
+      if (top < 545) {
+        window.requestAnimationFrame(moveBuoy);
+      }else {
+        buoy.remove()
+      }
     }
+    window.requestAnimationFrame(moveBuoy)
 
+    BUOYS.push(buoy);
 
-    if (top < 545) {
-      window.requestAnimationFrame(moveBuoy);
-    }else {
-      buoy.remove()
-    }
+    return buoy;
   }
-  window.requestAnimationFrame(moveBuoy)
-
-  BUOYS.push(buoy);
-
-  return buoy;
-
 }

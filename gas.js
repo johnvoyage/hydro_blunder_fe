@@ -1,5 +1,5 @@
 const GAS = []
-let gasGauge = 10
+let gasGauge = 12
 
 function checkCollision(gas) {
 
@@ -63,7 +63,7 @@ function createGas(leftpx) {
 
       if (checkCollision(gasTank)) {
         gasTank.remove()
-        return gasGauge += 5
+        return gasGauge += 6
       }
 
       if (top < 565) {

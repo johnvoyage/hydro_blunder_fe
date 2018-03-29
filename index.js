@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function(){
     startRumRunners();
     startGas();
     startBuoys();
+    getShwasted();
   }
 
 

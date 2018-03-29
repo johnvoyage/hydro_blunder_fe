@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', function(){
     playerDataDiv.id = "player-data-div"
     playerDataDiv.innerHTML =
     `
-      <h2>Username: ${userObject.username}</h2>
+      <h3>Username: ${userObject.username}</h3>
       <h4>High Score: ${userObject.high_score}</h4>
       <h4>Games Played: ${userObject.game_count}</h4>
       <h4>Rum Runners: ${userObject.drink_count}</h4>
-      <h1 id="start-button"> START </h1>
-      <h1 id="delete-button"> DELETE USER </h1>
+      <h2 id="start-button"> START </h2> <br> <br> <br><br> <br>
+      <h2 id="delete-button"> DELETE USER </h2>
     `
     playerDataDiv.className = "center"
     gameScreen.append(playerDataDiv)

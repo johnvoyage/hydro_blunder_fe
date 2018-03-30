@@ -1,16 +1,13 @@
 const BUOYS = []
-// window.addEventListener("click", () => {
-//   debugger
-// })
 
 function checkCollision(buoy) {
 
   let top = positionToInteger(buoy.style.top)
 
-  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left) + 50;
+  let boatLeftEdge = positionToInteger(document.getElementById("game-boat").style.left);
   let boatRightEdge = boatLeftEdge + 20;
-  let buoyLeftEdge = positionToInteger(buoy.style.left) + 10;
-  let buoyRightEdge = buoyLeftEdge + 35;
+  let buoyLeftEdge = positionToInteger(buoy.style.left) + 15;
+  let buoyRightEdge = buoyLeftEdge + 55;
 
   let boatTopEdge = positionToInteger(document.getElementById("game-boat").style.top)
   let boatBottomEdge = boatTopEdge + 100;

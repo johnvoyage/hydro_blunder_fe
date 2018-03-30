@@ -34,11 +34,13 @@ function checkCollision(gas) {
 
 function startGas() {
   setInterval(function() {
-    gasGauge -= 1;
-    console.log(gasGauge)
-    updateGas(gasGauge)
-    if (gasGauge === 0) {
-      return endGame()
+    if (!gameEnded) {
+      gasGauge -= 1;
+      console.log(gasGauge)
+      updateGas(gasGauge)
+      if (gasGauge === 0) {
+        return endGame()
+      }
     }
   }, 1000);
 

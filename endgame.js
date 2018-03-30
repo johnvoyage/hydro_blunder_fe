@@ -6,6 +6,7 @@ function endGame(){
     changeScoreboardGif()
     changeBackgroundGif()
     document.querySelector("canvas").remove();
+
   }
 }
 
@@ -17,15 +18,28 @@ function changeScoreboardGif() {
 function changeBackgroundGif() {
   let gameScreenBackground = document.querySelector('#game-screen')
   gameScreenBackground.style.backgroundImage = "url('./assets/images/gameovercrashgif.gif')"
+
   // let resetButton = document.createElement("h1")
   // resetButton.id = "game-over-text"
-  // resetButton.innerText = "RESET GAME"
-  //
+  // resetButton.innerHTML =
+  // `
+  //   <h1>Reset Game</h1>
+  // `
+  // gameScreenBackground.append(resetButton)
+
   // resetButton.addEventListener("click", () => {
-  //   fetchUsers()
+  //
   //   gameScreenBackground.style.backgroundImage = "url('./assets/images/boatbackground.gif')"
+  //   let fetchUsers = () => {
+  //     return fetch('http://localhost:3000/api/v1/users')
+  //       .then(resp => resp.json())
+  //       .then(json => {
+  //         createUsernameDataList(json)
+  //       })
+  //   }
+  //   fetchUsers()
   // })
-  // gameScreenBackground.style.zIndex = 999
+
 }
 
 // function removePieces() {

@@ -185,9 +185,25 @@
 
 
 #rules-div {
-  
+
 }
 
 #rules-div:hover {
+  color: black;
+}
+/*
+#game-over-text {
+  bottom: 5px;
+  width: 200px;
+  height: 50px;
+  padding: 5px;
+} */
+
+#game-over-text h1 {
+  position: absolute;
+  top: 1px;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
   color: black;
 }

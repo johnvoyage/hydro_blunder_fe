@@ -57,7 +57,7 @@ function checkCollision(rumRunner) {
 function startRumRunners() {
   setInterval(function() {
     createRumRunner(Math.floor(Math.random() * (755)))
-  }, 1000)
+  }, 750)
 }
 
 function createRumRunner(leftpx) {

@@ -17,16 +17,16 @@ The back-end is Ruby on Rails.
 ## Code Example
 Part of what makes Hydro Blunder harder to code is that the boat can move side to side **and** up and down. Checking for collisions required code like this:
 
-if (
-&nbsp;&nbsp;(buoyLeftEdge <= boatLeftEdge && buoyRightEdge >= boatLeftEdge) ||
-&nbsp;&nbsp;(buoyLeftEdge >= boatLeftEdge && buoyRightEdge <= boatRightEdge) ||
-&nbsp;&nbsp;(buoyLeftEdge <= boatRightEdge && buoyRightEdge >= boatRightEdge)
-) {
-&nbsp;&nbsp;if (
-&nbsp;&nbsp;&nbsp;&nbsp;(buoyTopEdge <= boatTopEdge && buoyBottomEdge >= boatTopEdge) ||
-&nbsp;&nbsp;&nbsp;&nbsp;(buoyTopEdge >= boatTopEdge && buoyBottomEdge <= boatBottomEdge) ||
-&nbsp;&nbsp;&nbsp;&nbsp;(buoyTopEdge <= boatBottomEdge && buoyBottomEdge >= boatBottomEdge)
-&nbsp;&nbsp;) {
+if (<br/>
+&nbsp;&nbsp;(buoyLeftEdge <= boatLeftEdge && buoyRightEdge >= boatLeftEdge) ||<br/>
+&nbsp;&nbsp;(buoyLeftEdge >= boatLeftEdge && buoyRightEdge <= boatRightEdge) ||<br/>
+&nbsp;&nbsp;(buoyLeftEdge <= boatRightEdge && buoyRightEdge >= boatRightEdge)<br/>
+) {<br/>
+&nbsp;&nbsp;if (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(buoyTopEdge <= boatTopEdge && buoyBottomEdge >= boatTopEdge) ||<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(buoyTopEdge >= boatTopEdge && buoyBottomEdge <= boatBottomEdge) ||<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(buoyTopEdge <= boatBottomEdge && buoyBottomEdge >= boatBottomEdge)<br/>
+&nbsp;&nbsp;) {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;return true
 
 ## Installation
